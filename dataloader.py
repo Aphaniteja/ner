@@ -31,5 +31,5 @@ def collatebatch(batch):
 
 
 def get_dls(dataset, bs=32):
-    dataloader = DataLoader(dataset, bs, collate_fn=collatebatch)
+    dataloader = DataLoader(dataset, bs, collate_fn=collatebatch,num_workers=4)
     return dataloader
