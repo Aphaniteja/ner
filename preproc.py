@@ -1,8 +1,8 @@
 def vocab_to_idx(sentence_tags):
     vocabtoidx = {}
     labelstoidx = {}
-    vocab_idx = 0
-    label_idx = 0
+    vocab_idx = 1
+    label_idx = 1
     for sentence_tag in sentence_tags:
         for word, tag in zip(*(sentence_tag)):
             if word not in vocabtoidx:
