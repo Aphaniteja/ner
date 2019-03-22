@@ -14,7 +14,7 @@ def training_loop(net, opt, loss_func, epochs, train_dl, valid_dl):
             loss = loss_func(output, y.view(-1))
             loss.backward()
             total_loss += loss.item()
-            total_acc += acc(preds[1], y.view(-1))
+            total_acc += acc(y.view(-1),preds[1])
             opt.step()
             opt.zero_grad()
         with torch.no_grad():

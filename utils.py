@@ -1,10 +1,21 @@
 import torch
-def acc(yhat, y):
+from sklearn.metrics import f1_score,classification_report,precision_score,recall_score
+def acc(y,yhat):
     mask = y > 0
     return (yhat[mask] == y[mask]).to(torch.float).mean()
 
-def f1score(yhat,y):
-    pass
+def f1score(y,yhat):
+    mask = y > 0
+    return f1_score(y[mask],yhat[mask],average='micro')
 
-def precision(yhat):
-    pass
+def classificationreport(y,yhat):
+    mask = y > 0
+    return classification_report(y[mask], yhat[mask])
+
+def precision(y,yhat):
+    mask = y > 0
+    return precision_score(y[mask], yhat[mask], average='micro')
+
+def recall(y,yhat):
+    mask = y > 0
+    return recall_score(y[mask], yhat[mask], average='micro')
