@@ -12,8 +12,8 @@ def vocab_to_idx(sentence_tags):
                 labelstoidx[tag] = label_idx
                 label_idx += 1
     vocabtoidx['UNK'] = vocab_idx + 1
-    vocabtoidx['pad']=0
-    labelstoidx['pad']=0
+    vocabtoidx['pad'] = 0
+    labelstoidx['pad'] = 0
     return vocabtoidx, labelstoidx
 
 

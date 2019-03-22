@@ -16,4 +16,3 @@ def read_data(file):
                 tags.append(ner)
 
     return sentences_tags
-
