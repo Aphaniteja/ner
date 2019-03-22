@@ -8,9 +8,9 @@ def f1score(y,yhat):
     mask = y > 0
     return f1_score(y[mask],yhat[mask],average='micro')
 
-def classificationreport(y,yhat):
+def classificationreport(y,yhat,target_names):
     mask = y > 0
-    return classification_report(y[mask], yhat[mask])
+    return classification_report(y[mask], yhat[mask],target_names=target_names)
 
 def precision(y,yhat):
     mask = y > 0
