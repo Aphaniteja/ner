@@ -17,6 +17,8 @@ If you want to use pretrained embeddings
 Download [fasttext](https://dl.fbaipublicfiles.com/fasttext/vectors-english/wiki-news-300d-1M.vec.zip)  
 Unzip and put it in 'data' folder.
 
+If you use pretrained word embeddings use a smaller learning rate.
+
 #### Usage:
 1) Install the requirements 
 2) Run ```python main.py ``` to see the results on model trained with default arguments. 
@@ -27,8 +29,7 @@ Unzip and put it in 'data' folder.
 2) I suggest using gpu when using pretrained word vectors or large lstm hidden size.  
 
 #### Process 
-1) I explain the process in process jupyter notebook
-
+1) I explain the process and overview in process.ipynb
 #### Questions
 
 1  Explain in detail the process of feature extraction including the normalization?  
@@ -54,6 +55,7 @@ Basic LSTM is similarly to greedy approach. Where as a LSTM-CRF is a more dp app
 4  How does the batch size affect your model?
 
 **Ans**:  Lower batch sizes give better f1 scores. See Ablation studies Jupyter notebook for details.
+The results change sligtly with each run , even after setting a random seed
 
 
 5  Report Recall, precision, and F1 measure  
@@ -73,6 +75,7 @@ You can see them at the end of training when you run ```python main.py```  with 
 But with training it gets better for other categories. The more number of samples a category has the better the model learns.
 
 3 Use word vectors to improve NER performance    
-**Ans**: Pretrained embedding from fasttext seem to give a slight edge  over randomly initialized embeddings from pytorch
+**Ans**: Pretrained embedding from fasttext seem to give a slight edge  over randomly initialized embeddings from pytorch.
+While Pretrained embeddings give a better f1 micro score,non pretrained embeddings give better macro score with only a small dip in micro score
 The results seem to vary slightly with each run (based on differnet random seed). further optimizations may lead 
 to better results.
