@@ -1,5 +1,6 @@
 from torch import nn
 import torch
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 class Model(nn.Module):
@@ -22,6 +23,7 @@ def model_output(model, dataloader, set_name="train"):
     predicted = torch.tensor([], dtype=torch.long)
     with torch.no_grad():
         for x, y in dataloader:
+            x,y=x.to(device),y.to(device)
             output = model(x)
             preds = torch.max(output, 1)
             correct = torch.cat((correct, y.view(-1)))
