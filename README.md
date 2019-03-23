@@ -33,7 +33,7 @@ for validation sets they are
 Bonus(not mandatory):
 
 *  Report entity wise Recall, precision, and F1 measure like PER, LOC
-Ans:See Jupyter Notebook for details
+Ans:Printed at the end of training 
 *  Report effect of imbalanced dataset if any
 Ans: F1,precision ,recall are all dominated by 'O' category because almost 90% of the data is category 'O'
 

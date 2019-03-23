@@ -14,8 +14,9 @@ def f1score(y, yhat):
 
 def classificationreport(y, yhat, **kwargs):
     mask = y > 0
-    return classification_report(y[mask], yhat[mask], **kwargs)
-
+    yhat=yhat[mask]
+    y=y[mask]
+    return classification_report(y,yhat ,labels=range(1,10) ,**kwargs)
 
 def precision(y, yhat):
     mask = y > 0

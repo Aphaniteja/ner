@@ -18,8 +18,8 @@ class Model(nn.Module):
 
 
 def model_output(model, dataloader, set_name="train"):
-    correct = torch.empty(0, dtype=torch.long)
-    predicted = torch.empty(0, dtype=torch.long)
+    correct = torch.tensor([], dtype=torch.long)
+    predicted = torch.tensor([], dtype=torch.long)
     with torch.no_grad():
         for x, y in dataloader:
             output = model(x)
