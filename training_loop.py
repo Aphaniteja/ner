@@ -29,5 +29,6 @@ def training_loop(net, opt, loss_func, epochs, train_dl, valid_dl, verbosity):
                 total_valid_loss += loss.item()
                 total_valid_acc += acc(preds[1], y.view(-1))
         if verbosity == 1:
-            print(total_loss / len(train_dl), total_acc / len(train_dl), total_valid_loss / len(valid_dl),
-                  total_valid_acc / len(valid_dl))
+            print(f'Train loss:{total_loss / len(train_dl):.3f}', f'Train accuracy:{total_acc / len(train_dl):.3f}'
+                  , f'Valid loss:{total_valid_loss / len(valid_dl):.3f}'
+                  ,f'Valid accuracy:{total_valid_acc / len(valid_dl):.3f}')
