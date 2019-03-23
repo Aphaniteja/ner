@@ -12,7 +12,7 @@ class Model(nn.Module):
             self.emb = nn.Embedding(len(vocabtoidx) + 1, emb_size)
         else:
             word_vecs = word_embeddings(vocabtoidx)
-            emb_size=word_vecs.shape[1] + 1
+            emb_size=word_vecs.shape[1]
             self.emb = nn.Embedding(len(vocabtoidx) + 1, emb_size)
             self.emb = self.emb.from_pretrained(word_vecs, freeze=freeze)
         self.lstm = nn.LSTM(emb_size, lstm_hidden_size, batch_first=True)
