@@ -1,11 +1,13 @@
 import torch
+
+
 def vocab_to_idx(sentence_tags):
     vocabtoidx = {}
     labelstoidx = {}
     vocab_idx = 1
     label_idx = 1
     for sentence_tag in sentence_tags:
-        for word, tag in zip(*(sentence_tag)):
+        for word, tag in zip(*sentence_tag):
             if word not in vocabtoidx:
                 vocabtoidx[word] = vocab_idx
                 vocab_idx += 1
@@ -18,7 +20,7 @@ def vocab_to_idx(sentence_tags):
     return vocabtoidx, labelstoidx
 
 
-def prepare_senetence_tags(sentence_tags, vocabtoidx, labelstoidx):
+def prepare_sentence_tags(sentence_tags, vocabtoidx, labelstoidx):
     sentence = []
     tags = []
     for word, tag in zip(*sentence_tags):
@@ -33,7 +35,7 @@ def prepare_senetence_tags(sentence_tags, vocabtoidx, labelstoidx):
 
 def prepare_batch(sentences_tags, vocabtoidx, labelstoidx):
     for sentence_tag in sentences_tags:
-        yield prepare_senetence_tags(sentence_tag, vocabtoidx, labelstoidx)
+        yield prepare_sentence_tags(sentence_tag, vocabtoidx, labelstoidx)
 
 
 def word_embeddings(vocabtoidx):
@@ -41,7 +43,6 @@ def word_embeddings(vocabtoidx):
 
     def load_vectors(fname):
         fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
-        n, d = map(int, fin.readline().split())
         data = {}
         for line in fin:
             tokens = line.rstrip().split(' ')
