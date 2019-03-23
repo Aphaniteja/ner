@@ -1,13 +1,20 @@
 ### Named Entity Recognition on Conll 2003
 
 
-#### Requirements
+#### Requirements.
+You should have the following installed.
 * Python 3.6
 * pytorch>=0.41
 * numpy >=1.14.1
 * scikit-learn >=0.19.1
 
+[install pytorch as per your device](https://pytorch.org/get-started/locally)
 
+#### Pretrained Word embedding:
+If you want to use pretrained embeddings
+
+Download [fasttext](https://dl.fbaipublicfiles.com/fasttext/vectors-english/wiki-news-300d-1M.vec.zip)
+Unzip and put it in 'data' folder.
 
 #### Data:
 1) DOCSTART is used as an ordinary word with tag as 'O'
@@ -15,7 +22,11 @@
 #### Questions
 
 1  Explain in detail the process of feature extraction including the normalization?
-Ans: todo.
+Ans: I downloaded the data from https://github.com/davidsbatista/NER-datasets/tree/master/CONLL2003.
+I didn't perform any normalization step. I felt lowercasing or stemming will lose the properties that I care about in NER task.
+I didn't use the pos tags as well. My aim was to build an end to end model from words in sentences to tags.
+Although normalization and using pos tags may producing different results.But that is left for future work.
+
    
 
 2  Describe the hyperparameter choices?
@@ -25,7 +36,7 @@ See Jupyter notebook for details.
 
 3  Apart from LSTM if given a choice what model do you think works better? and why?
 Ans: LSTM-Conditional random fields would do a good job as they apply to an entire sequence(using dynamic programming)
-
+Basic LSTM is similarly to greedy approach. Where as a LSTM-CRF is a more dp approach.
 
 4  How does the batch size affect your model?
 Ans: See Jupyter notebook for details. Lower batch sizes give better f1 scores.
