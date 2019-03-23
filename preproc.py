@@ -1,3 +1,4 @@
+import torch
 def vocab_to_idx(sentence_tags):
     vocabtoidx = {}
     labelstoidx = {}
@@ -35,5 +36,26 @@ def prepare_batch(sentences_tags, vocabtoidx, labelstoidx):
         yield prepare_senetence_tags(sentence_tag, vocabtoidx, labelstoidx)
 
 
-def word_embeddings():
-    pass
+def word_embeddings(vocabtoidx):
+    import io
+
+    def load_vectors(fname):
+        fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
+        n, d = map(int, fin.readline().split())
+        data = {}
+        for line in fin:
+            tokens = line.rstrip().split(' ')
+            if tokens[0] in vocabtoidx or tokens[0] == 'UNK':
+                data[tokens[0]] = list(map(float, tokens[1:]))
+        return data
+
+    word_vecs = load_vectors('data/wiki-news-300d-1M.vec')
+    weights_matrix = torch.zeros((len(vocabtoidx) + 1, 300))
+
+    for word, idx in vocabtoidx.items():
+        try:
+            weights_matrix[idx] = torch.tensor((word_vecs[word]))
+        except KeyError:
+            weights_matrix[idx] = torch.tensor((word_vecs['UNK']))
+
+    return weights_matrix
