@@ -28,9 +28,9 @@ def main(batch_size, emb_size, hidden_size, learning_rate, epochs, verbosity, pr
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-bs", "--batch_size", type=int, help="batch_size", default=32)
-    parser.add_argument("-embs", "--emb_size", type=int, help="emb_size", default=50)
-    parser.add_argument("-hs", "--hidden_size", type=int, help="lstm_hidden_size", default=50)
+    parser.add_argument("-bs", "--batch_size", type=int, help="batch_size", default=16)
+    parser.add_argument("-embs", "--emb_size", type=int, help="emb_size", default=128)
+    parser.add_argument("-hs", "--hidden_size", type=int, help="lstm_hidden_size", default=128)
     parser.add_argument("-lr", "--learning_rate", help="learning rate", default=1e1)
     parser.add_argument("-e", "--epochs", type=int, help="no of epochs", default=5)
     parser.add_argument("-v", "--verbosity", help="choose 0 for non verbose", default=1)
