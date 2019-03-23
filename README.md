@@ -2,10 +2,11 @@
 
 
 #### Requirements
-1)Python 3.6
-2)pytorch>=0.41
-3)numpy
-4)scikit-learn
+* Python 3.6
+* pytorch>=0.41
+* numpy >=1.14.1
+* scikit-learn >=0.19.1
+
 
 
 #### Data:
@@ -47,5 +48,6 @@ Ans:Printed at the end of training
 Ans: F1,precision ,recall are all dominated by 'O' category because almost 90% of the data is category 'O'
 
 * Use word vectors to improve NER performance
-Ans: I didn't see much improvement from using pretrained fasttext embeddings. 
-Using normal word vectors initialized using torch.nn gives better result
+Ans: Pretrained embedding from fasttext seem to give a slight edge  over randomly initialized embeddings from pytorch
+The results seem to vary slightly with each run (based on differnet random seed). further optimizations may lead 
+to a better result.
