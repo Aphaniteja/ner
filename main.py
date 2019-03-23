@@ -22,7 +22,7 @@ def main(batch_size, emb_size, hidden_size, learning_rate, epochs, verbosity):
     opt = torch.optim.SGD(net.parameters(), learning_rate)
     training_loop(net, opt, loss_func, epochs, train_dl, valid_dl, verbosity)
     correct,predicted=model_output(net,valid_dl)
-    print(classificationreport(correct,predicted,target_names=list(zip(*labeltoidx.items()))[0][:-1]))
+    print(classificationreport(correct.cpu(),predicted.cpu(),target_names=list(zip(*labeltoidx.items()))[0][:-1]))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
